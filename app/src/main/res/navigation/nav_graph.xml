@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tasksFragment">
+
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.example.mvvmtodoapplication.ui.TaskFragment.TasksFragment"
+        android:label="Tasks"
+        tools:layout="@layout/fragment_tasks">
+        <action
+            android:id="@+id/action_tasksFragment_to_addEditFragment"
+            app:destination="@id/addEditFragment" />
+        <argument
+            android:name="action"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addEditFragment"
+        android:name="com.example.mvvmtodoapplication.ui.taskAddEditFragment.AddEditFragment"
+        android:label="fragment_add_edit_task"
+        tools:layout="@layout/fragment_add_edit_task" >
+        <action
+            android:id="@+id/action_addEditFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+        <argument
+            android:name="task"
+            app:argType="com.example.mvvmtodoapplication.model.Task"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/deleteAllCompletedDialog"
+        android:name="com.example.mvvmtodoapplication.ui.TaskFragment.DeleteAllCompletedDialog"
+        android:label="DeleteAllCompletedDialog" />
+    <action android:id="@+id/action_global_deleteAllCompletedDialog" app:destination="@id/deleteAllCompletedDialog"/>
+</navigation>
